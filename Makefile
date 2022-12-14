@@ -1,5 +1,5 @@
 obj-m += pidriver.o 
-ccflags-y := -std=gnu99 -Wno-declaration-after-statement
+ccflags-y := -std=gnu99 -Wno-declaration-after-statement -g
  
 PWD := $(CURDIR) 
  
@@ -8,11 +8,11 @@ all: client
 client: client.c
 	$(CC) -o $@ $^ -lm
 gencsv: client
-		for i in `seq 1000 1000 100000`; do \
+		for i in `seq 1 1 1000`; do \
                 printf "%d" $$i;\
 			for j in `seq 0 1 49`; do\
 				printf " ";\
-                sudo ./client $$i;\
+                sudo taskset 0x8 ./client $$i;\
 			done;\
 		printf "\n";\
 		done > result_clock_gettime.csv
