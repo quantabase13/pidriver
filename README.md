@@ -1,3 +1,3 @@
 ## pidriver
 
-linux kernel module that can calcute pi 
+linux kernel module that can calculate pi 
