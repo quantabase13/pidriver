@@ -21,7 +21,7 @@ static long long compute_pi_leibniz(long long N);
 static long long compute_pi_leibniz(long long N)
 {
     int64_t pi = 0;
-    for (size_t i = 0; i < N; i++) {
+    for (long long i = 0; i < N; i++) {
         int64_t tmp = (i & 1) ? (-1) : 1;
         pi += tmp * ((1<<31)/(2 * i + 1));
     }
@@ -46,7 +46,7 @@ static ssize_t pi_read(struct file *file, char *buf, size_t size, loff_t *offset
 static ssize_t pi_write(struct file *file, const char *bur, size_t size, loff_t *offset)
 {
     ktime_t kt;
-    int loop = 100000;
+    int loop = 1000000;
     switch(size){
     case 0:  // defalut (time measure)
         kt = ktime_get();

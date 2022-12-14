@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
     
     lseek(fd, i, SEEK_SET);
     sz = write(fd, write_buf, 0);
-    printf("%lld\n", sz);
+    printf("%lld", sz);
     
     // for (int i = 0; i <= offset; i++) {
     //     for (int j = 0; j < 100; j++){
