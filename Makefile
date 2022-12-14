@@ -6,7 +6,7 @@ PWD := $(CURDIR)
 all: client 
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules 
 client: client.c
-	$(CC) -o $@ $^
+	$(CC) -o $@ $^ -lm
 clean: 
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
 	$(RM) client out
