@@ -18,6 +18,10 @@ int main(int argc, char *argv[])
     int i;
     long conv = strtol(argv[1], &p, 10);
     i = conv;
+    char *q;
+    int j;
+    long conv2 = strtol(argv[2], &q, 10);
+    j = conv2;
     int32_t s = lround((1<<16) * M_PI);
 
     char buf[1];
@@ -31,8 +35,16 @@ int main(int argc, char *argv[])
     }
     
     lseek(fd, i, SEEK_SET);
-    sz = write(fd, write_buf, 0);
+    sz = write(fd, write_buf, j);
     printf("%lld", sz);
+    // double pi_fix = 0;
+    // for (int i = 0; i < 50; i++){
+    //     double tmp = (double) (sz &1) / ((long long)1 << (50 - i));
+    //     sz >>= 1;
+    //     pi_fix += tmp; 
+    // }
+    // pi_fix += sz;
+    // printf("%.15f %.15f\n", pi_fix, M_PI);
     
     // for (int i = 0; i <= offset; i++) {
     //     for (int j = 0; j < 100; j++){
